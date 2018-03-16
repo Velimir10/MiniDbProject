@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="velimir.databaseproject.MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/textView_welcome_marginBottom"
+        android:text="@string/textView_info"
+        android:textSize="@dimen/textView_welcome_info" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/textView_welcome_marginBottom"
+            android:gravity="center_horizontal"
+            android:text="@string/textView_add_info"
+            android:textSize="@dimen/textView_info" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/textView_welcome_marginBottom"
+            android:gravity="center_horizontal"
+            android:text="@string/textView_show_students_info"
+            android:textSize="@dimen/textView_info" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/textView_welcome_marginBottom"
+            android:gravity="center_horizontal"
+            android:text="@string/textView_delete_table"
+            android:textSize="@dimen/textView_info" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="onButtonAddClick"
+            android:text="@string/button_add_new_student" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="onButtonDeleteClick"
+            android:text="@string/button_delete" />
+
+        <Button
+            android:id="@+id/button_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="onButtonShowClick"
+            android:text="@string/button_show_students" />
+    </LinearLayout>
+
+</LinearLayout>

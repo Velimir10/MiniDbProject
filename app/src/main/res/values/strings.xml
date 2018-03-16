@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">DatabaseProject</string>
+    <string name="button_add_new_student">Add</string>
+    <string name="button_show_students">Show</string>
+    <string name="button_delete">Delete</string>
+
+    <string name="textView_info">Welcome to Database Academy</string>
+    <string name="textView_add_info">Press button \"ADD\"\ to add a new Student in Database</string>
+    <string name="textView_show_students_info"> Press button \"Show\"\ to see top 5 students with over 80% of points.</string>
+    <string name="textView_delete_table">Press button \"Delete\"\ to delete table from Database Academy</string>
+
+    <string name="dialog_add_info">Fill the form bellow</string>
+    <string name="hint_name">Enter name..</string>
+    <string name="hint_lastname">Enter lastname..</string>
+    <string name="hint_year">Enter registration year..</string>
+    <string name="hint_points">Enter number of points..</string>
+    <string name="add_dialog">Add</string>
+    <string name="cancel_dialog">Cancel</string>
+
+
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="year">Year of Reg.</string>
+    <string name="points">Points</string>
+
+</resources>
