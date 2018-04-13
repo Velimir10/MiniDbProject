@@ -1,28 +1,30 @@
-package velimir.databaseproject;
+package dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import db.AcademyContract;
-import db.DatabaseHelper;
+import db.RepositoryManager;
 import model.Student;
+import velimir.databaseproject.OnDialogSendMessegeListener;
+import velimir.databaseproject.R;
 
 
 public class AddDialog extends DialogFragment {
 
 
-
     private EditText mName, mLastname, mYear, mPoints;
     private OnDialogSendMessegeListener listener;
+    private String name;
+    private String lastName;
+    private String year;
+    private String points;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -42,32 +44,23 @@ public class AddDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                String name = mName.getText().toString();
-                String lastName = mLastname.getText().toString();
-                String year = mYear.getText().toString();
-                String points = mPoints.getText().toString();
+                getViewValues();
 
                 if (name.equals("") || lastName.equals("") || year.equals("") || points.equals("")) {
-                    if (listener != null) {
-                        listener.onDialogSendMessege("To INSERT a Student in Database you have to fill all fields!");
-                    }
 
+                    sendMessegeToParent("To INSERT a Student in Database you have to fill all fields!");
                 } else {
 
                     int intYear = Integer.valueOf(year);
                     int intPoints = Integer.valueOf(points);
 
-                    Student student = new Student(name, lastName, intYear, intPoints, getActivity());
-                    boolean hasInserted = student.insert();
 
-                    if(hasInserted){
+                    boolean hasInserted = RepositoryManager.getInstance().insert(new Student(name, lastName, intYear, intPoints), getActivity());
 
-                        if (listener != null) {
-                            listener.onDialogSendMessege("Successfuly added!");
-                        }
+                    if (hasInserted) {
+                        sendMessegeToParent("Successfuly added!");
 
                     }
-
 
 
                 }
@@ -93,5 +86,19 @@ public class AddDialog extends DialogFragment {
         this.listener = (OnDialogSendMessegeListener) context;
         super.onAttach(context);
 
+    }
+
+    private void getViewValues() {
+
+        name = mName.getText().toString();
+        lastName = mLastname.getText().toString();
+        year = mYear.getText().toString();
+        points = mPoints.getText().toString();
+    }
+
+    private void sendMessegeToParent(String message) {
+        if (listener != null) {
+            listener.onDialogSendMessege(message);
+        }
     }
 }

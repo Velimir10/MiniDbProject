@@ -1,18 +1,14 @@
-package velimir.databaseproject;
+package dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import db.AcademyContract;
-import db.DatabaseHelper;
-import model.Student;
+import db.RepositoryManager;
+import velimir.databaseproject.OnDialogSendMessegeListener;
 
 
 public class DialogDelete extends DialogFragment {
@@ -31,18 +27,18 @@ public class DialogDelete extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                if (Student.tableExist(getActivity())) {
 
-                    Student.deleteTable(getActivity());
 
-                    if(listener != null){
-                        listener.onDialogSendMessege("Deleted!");
-                    }
+                if (RepositoryManager.getInstance().tableExist(getActivity())) {
+
+                    RepositoryManager.getInstance().deleteTable(getActivity());
+
+                    sendMessegeToParent("Deleted!");
 
                 } else {
-                    if(listener != null){
-                        listener.onDialogSendMessege("There is no table to delete!");
-                    }
+
+                   sendMessegeToParent("There is no table to delete!");
+
                 }
 
 
@@ -66,5 +62,11 @@ public class DialogDelete extends DialogFragment {
     public void onAttach(Context context) {
         listener = (OnDialogSendMessegeListener) context;
         super.onAttach(context);
+    }
+
+    private void sendMessegeToParent(String message) {
+        if (listener != null) {
+            listener.onDialogSendMessege(message);
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import db.RepositoryManager;
 import model.Student;
 
 public class ShowActivity extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class ShowActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
-    private LinearLayoutManager linearLayoutManager;
+
     private ArrayList<Student> studentLista;
 
 
@@ -25,13 +26,11 @@ public class ShowActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        studentLista = Student.read(this);
+        studentLista = RepositoryManager.getInstance().read(this);
 
         myAdapter = new MyAdapter(studentLista);
         recyclerView = findViewById(R.id.myRecycle);
-        linearLayoutManager = new LinearLayoutManager(this);
-
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myAdapter);
 
     }
